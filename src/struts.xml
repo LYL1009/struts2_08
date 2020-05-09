@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <constant name="struts.configuration.xml.reload" value="true"/>
+    <constant name="struts.devMode" value="true"/>
+    <package name="struts2" extends="struts-default">
+        <!-- 全局Result  -->
+        <!-- 
+        <global-results>
+           <result name="login" type="redirect">/login.jsp</result>
+        </global-results>
+         -->
+        <action name="login" class="com.lyl.struts2.LoginAction">
+              <result name="success">/login_success.jsp</result>
+              <result name="error">/login_error.jsp</result>
+        </action>
+        
+        <action name="mustLogin" class="com.lyl.struts2.MustLoginAction">
+              <!-- type的默认值为dispatcher，就是type=“dispatcher”，表示转发 -->
+              <!-- 
+               <result name="login" type="dispatcher">/login.jsp</result>
+               -->
+               <!-- type="redirect"，可以重定向到任何一个web资源，如：jsp或Action
+                                     如果要重定向到Action，需要写上后缀：xxxx.action
+                    type="redirectAction",可以重定向到Action，不需要写后缀，此种方式更通用些
+                                    不会因为后缀的改变影响配置
+                -->
+                <!-- 局部的Result -->
+              <result name="login">/login.jsp</result>
+              <result>/must_login.jsp</result>
+        </action>
+    </package>
+
+</struts>
